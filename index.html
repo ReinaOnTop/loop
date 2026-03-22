@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MP3 Loop</title>
+</head>
+<body>
+
+<button onclick="playMusic()">Play</button>
+<button onclick="stopMusic()">Stop</button>
+
+<audio id="player">
+    <source src="gay_boosted.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const player = document.getElementById("player");
+
+function playMusic() {
+    player.play();
+}
+
+function stopMusic() {
+    player.pause();
+    player.currentTime = 0;
+}
+
+// force loop (in case loop attr fails)
+player.addEventListener("ended", () => {
+    player.currentTime = 0;
+    player.play();
+});
+</script>
+
+</body>
+</html>
